@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 迁出main分支文件
+      uses: actions/checkout@v3
+      with:
+        path: main
+
+    - name: 获取NodeJS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: 初始化部署环境
+      run: yarn
+
+    - name: 构建项目
+      run: yarn build

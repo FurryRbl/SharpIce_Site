@@ -1,0 +1,10 @@
+{
+    "navbar": {
+        "language": "语言"
+    },
+    "tips": {
+        "cookie": "这个很重要！\n 是否接受使用Cookie存储网页个性化设置？同意后您仍可以撤销同意！",
+        "accept": "接受",
+        "do_not_accept": "不接受"
+    }
+}

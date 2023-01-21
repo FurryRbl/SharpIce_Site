@@ -1,0 +1,10 @@
+{
+    "navbar": {
+        "language": "Language"
+    },
+    "tips": {
+        "cookie": "This is very important! \n Do you accept the use of cookies to store web page personalization settings? Once you have given your consent you can still withdraw your consent!",
+        "accept": "Accept",
+        "do_not_accept": "Do not accept"
+    }
+}
