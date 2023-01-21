@@ -4,22 +4,59 @@ on:
   push:
     branches: ["main"]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: 迁出main分支文件
-      uses: actions/checkout@v3
-      with:
-        path: main
+      - name: 迁出文件
+        uses: actions/checkout@v3
 
-    - name: 获取NodeJS
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
+      - name: 获取NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: 初始化部署环境
-      run: yarn
+      - name: 初始化部署环境
+        run: yarn
 
-    - name: 构建项目
-      run: yarn build
+      - name: 构建项目
+        run: yarn build
+
+      - name: 上传构建结果
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "./dist"
+
+      - name: 部署到Github页面
+        id: deployment
+        uses: actions/deploy-pages@v1
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 迁出文件
+        uses: actions/checkout@v3
+
+      - name: 初始化package.json读取工具
+        id: version
+        uses: ashley-taylor/read-json-property-action@v1.0
+        with:
+          path: ./package.json
+          property: version
+
+      - name: 创建Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.value }}
+          name: Release ${{ steps.version.outputs.value }}
+          draft: false
+          prerelease: false

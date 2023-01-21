@@ -1,0 +1,79 @@
+name: Check
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 迁出文件
+        uses: actions/checkout@v3
+
+      - name: 获取NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 检查依赖
+        run: yarn
+
+      - name: 检查构建项目
+        run: yarn build
+
+  Code:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+    
+    steps:
+      - name: 迁出文件
+        uses: actions/checkout@v3
+
+      - name: 初始化CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: 自动构建
+        uses: github/codeql-action/autobuild@v2
+
+      - name: 运行 CodeQL 分析
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"
+
+  Nodejsscan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nodejsscan 扫描
+        id: njsscan
+        uses: ajinabraham/njsscan-action@master
+        with:
+          args: '. --sarif --output results.sarif || true'
+      - name: 上传 njsscan 报告
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
+
+  Other:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 迁出文件
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v3
+
+      - name: 依赖审查
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v2

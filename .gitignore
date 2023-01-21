@@ -18,14 +18,5 @@ yarn-error.log*
 pnpm-debug.log*
 *.log
 
-# IDE目录文件
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
 # VsCode的VS Code Counter插件目录
 .VSCodeCounter
