@@ -9133,10 +9133,10 @@ vue-codemod@^0.0.5:
     source-map "^0.6.1"
     yargs "^16.2.0"
 
-vue-dark-switch@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/vue-dark-switch/-/vue-dark-switch-0.2.0.tgz#db4b4c3f6203a15861d7870b6ee9772cb4aada25"
-  integrity sha512-WnSMt9rUfcy62863AtPREqtI75YeVVQCrnFsiBzLRRv7rfg687Oq5ZfSp2886X19Z27aqhBnTx+f5WI41CMc2A==
+vue-dark-switch@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/vue-dark-switch/-/vue-dark-switch-0.2.2.tgz#379f6e63302b3647381b19d635bb9f54b986cb35"
+  integrity sha512-dsRBzLhJlMUjFTXCipzjxhljcXGKwP00TWYhXs+lz6Rsuw1gsAsPwwAf2OhhwndvlWIbZKPoOCMNZXFGwmhCCw==
 
 vue-eslint-parser@^8.0.1:
   version "8.3.0"
