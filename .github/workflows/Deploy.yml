@@ -48,7 +48,7 @@ jobs:
 
       - name: 初始化package.json读取工具
         id: version
-        uses: ashley-taylor/read-json-property-action@v1.0
+        uses: ashley-taylor/read-json-property-action@v1.1
         with:
           path: ./package.json
           property: version
