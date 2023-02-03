@@ -1,6 +1,6 @@
 {
   "name": "sharpice_site",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SharpIce的个人网站",
   "main": "index.js",
   "homepage": "https://sharpice.top",
