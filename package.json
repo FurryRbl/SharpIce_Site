@@ -31,7 +31,7 @@
     "bulma": "^0.9.4",
     "core-js": "^3.8.3",
     "vue": "^3.2.47",
-    "vue-dark-switch": "^0.2.0",
+    "vue-dark-switch": "^0.3.0",
     "vue-i18n": "^9.2.2",
     "vue-sweetalert2": "^5.0.5",
     "js-cookie": "^3.0.1"
