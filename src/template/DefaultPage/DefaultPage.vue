@@ -16,7 +16,7 @@
         </div>
       </div>
       <a style="padding: 0; display: flex; align-items: center;">
-        <Switch />
+        <DarkSwitch />
       </a>
     </div>
   </nav>
@@ -37,11 +37,11 @@
 </style>
 
 <script>
-import { Switch } from "vue-dark-switch"; // 引入vue-dark-switch
+import { Switch as DarkSwitch } from "vue-dark-switch"; // 引入vue-dark-switch
 import Cookies from 'js-cookie' // 引入 js-cookie
 export default {
   components: {
-    Switch, // 注册vue-dark-switch的Switch
+    DarkSwitch, // 注册vue-dark-switch的Switch
   },
   methods: {
     SwitchLanguage(locale) {
